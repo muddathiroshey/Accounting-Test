@@ -325,6 +325,11 @@
     border-color: var(--danger);
     background: var(--danger-light);
   }
+  .option.reveal-correct .option-dot {
+    border-color: var(--success);
+    background: var(--success-light);
+  }
+.option.reveal-correct .option-dot::after { opacity: 1; background: var(--success); }
 .option.wrong-opt .option-dot::after { opacity: 1; background: var(--danger); }
   .option-letter {
     font-family: 'DM Mono', monospace;
@@ -845,7 +850,8 @@ function revealMC(i) {
   item.opts.forEach((_,j) => {
     const opt = document.getElementById(`mc-opt-${i}-${j}`);
     opt.style.pointerEvents = 'none';
- if(j === item.ans) opt.classList.add('correct-opt');
+if(j === item.ans && chosen === item.ans) opt.classList.add('correct-opt');
+else if(j === item.ans && chosen !== item.ans) opt.classList.add('reveal-correct');
 else if(j === chosen && chosen !== item.ans) { opt.classList.add('wrong-opt'); opt.classList.remove('selected'); }
   });
   const fb = document.getElementById('mc-fb-'+i);
