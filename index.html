@@ -325,10 +325,11 @@
     border-color: var(--danger);
     background: var(--danger-light);
   }
-  .option.reveal-correct .option-dot {
-    border-color: var(--success);
-    background: var(--success-light);
+ .option.reveal-correct .option-dot {
+    border-color: var(--border-strong);
+    background: transparent;
   }
+.option.reveal-correct .option-dot::after { opacity: 0; }
 .option.reveal-correct .option-dot::after { opacity: 1; background: var(--success); }
 .option.wrong-opt .option-dot::after { opacity: 1; background: var(--danger); }
   .option-letter {
