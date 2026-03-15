@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accounting Principles 1 — Chapters 1, 2 & 3</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --ink-soft: #4a4a6a;
+    --ink-muted: #8888aa;
+    --paper: #faf9f6;
+    --paper-warm: #f4f1ea;
+    --paper-card: #ffffff;
+    --accent: #c84b31;
+    --accent-light: #f5e6e2;
+    --accent-deep: #8c3421;
+    --gold: #c9922a;
+    --gold-light: #fdf3e3;
+    --success: #2d6a4f;
+    --success-light: #d8f3e9;
+    --danger: #9b2335;
+    --danger-light: #fde8eb;
+    --border: #e2ddd6;
+    --border-strong: #c8c3ba;
+    --shadow-sm: 0 1px 3px rgba(26,26,46,0.06);
+    --shadow-md: 0 4px 16px rgba(26,26,46,0.10);
+    --shadow-lg: 0 12px 40px rgba(26,26,46,0.14);
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── HERO HEADER ── */
+  .hero {
+    background: var(--ink);
+    color: white;
+    padding: 56px 40px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 90% 50%, rgba(200,75,49,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(201,146,42,0.12) 0%, transparent 60%);
+  }
+  .hero-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 5vw, 46px);
+    line-height: 1.15;
+    margin-bottom: 10px;
+    color: #ffffff;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: #f0c090;
+  }
+  .hero-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: white;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── PROGRESS ── */
+  .progress-wrap {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 14px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+  }
+  .progress-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .progress-text {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    white-space: nowrap;
+    min-width: 110px;
+  }
+  .progress-track {
+    flex: 1;
+    height: 5px;
+    background: var(--paper-warm);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    border-radius: 99px;
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+    width: 0%;
+  }
+  .progress-pct {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 500;
+    min-width: 32px;
+    text-align: right;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 40px 0 24px;
+  }
+  .section-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .section-icon.mc { background: var(--accent-light); color: var(--accent); }
+  .section-icon.tf { background: var(--gold-light); color: var(--gold); }
+  .section-info {}
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .section-meta {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: 2px;
+  }
+
+  /* ── INFO BOX ── */
+  .info-box {
+    background: var(--paper-warm);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  /* ── QUESTION CARD ── */
+  .q-card {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .q-card:hover { box-shadow: var(--shadow-md); }
+  .q-card.answered { border-color: var(--border-strong); }
+  .q-card.correct-card { border-color: #a3d9c2; background: #f8fffe; }
+  .q-card.wrong-card { border-color: #f0b8c0; background: #fffafa; }
+
+  .q-header {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  .q-badge {
+    background: var(--paper-warm);
+    color: var(--ink-muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .q-text {
+    font-size: 14.5px;
+    color: var(--ink);
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  /* ── OPTIONS ── */
+  .options { display: flex; flex-direction: column; gap: 8px; }
+
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.15s;
+    position: relative;
+  }
+  .option:hover {
+    border-color: var(--accent);
+    background: var(--accent-light);
+  }
+  .option input[type=radio] { display: none; }
+  .option-dot {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--border-strong);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .option-dot::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .option.selected .option-dot {
+    border-color: var(--accent);
+    background: var(--accent-light);
+  }
+  .option.selected .option-dot::after { opacity: 1; }
+  .option.selected {
+    border-color: var(--accent);
+    background: var(--accent-light);
+  }
+  .option-letter {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    margin-top: 2px;
+    flex-shrink: 0;
+    min-width: 14px;
+  }
+  .option-text {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .option.correct-opt {
+    border-color: var(--success);
+    background: var(--success-light);
+  }
+  .option.correct-opt .option-text { color: var(--success); }
+  .option.correct-opt .option-letter { color: var(--success); }
+  .option.wrong-opt {
+    border-color: var(--danger);
+    background: var(--danger-light);
+  }
+  .option.wrong-opt .option-text { color: var(--danger); }
+  .option.wrong-opt .option-letter { color: var(--danger); }
+
+  /* ── TRUE/FALSE ── */
+  .tf-wrap { display: flex; gap: 10px; margin-top: 4px; }
+  .tf-btn {
+    flex: 1;
+    padding: 11px 0;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .tf-btn:hover { border-color: var(--accent); background: var(--accent-light); color: var(--accent); }
+  .tf-btn.selected { border-color: var(--accent); background: var(--accent-light); color: var(--accent); }
+  .tf-btn.correct-tf { border-color: var(--success); background: var(--success-light); color: var(--success); }
+  .tf-btn.wrong-tf { border-color: var(--danger); background: var(--danger-light); color: var(--danger); }
+  .tf-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.5;
+  }
+
+  /* ── ACTIONS ── */
+  .actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 13px 32px;
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    box-shadow: 0 2px 8px rgba(200,75,49,0.25);
+  }
+  .btn-primary:hover { background: var(--accent-deep); transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-secondary {
+    background: white;
+    color: var(--ink-soft);
+    border: 1.5px solid var(--border-strong);
+    padding: 13px 28px;
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-secondary:hover { border-color: var(--ink-soft); color: var(--ink); background: var(--paper-warm); }
+
+  /* ── SCORE CARD ── */
+  .score-card {
+    display: none;
+    background: var(--ink);
+    color: white;
+    border-radius: var(--radius);
+    padding: 32px 36px;
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .score-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 80% at 90% 50%, rgba(200,75,49,0.2) 0%, transparent 65%);
+  }
+  .score-card-inner { position: relative; }
+  .score-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+  .score-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 6px;
+    font-family: 'DM Mono', monospace;
+  }
+  .score-big {
+    font-family: 'DM Serif Display', serif;
+    font-size: 56px;
+    line-height: 1;
+    color: white;
+  }
+  .score-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 4px;
+  }
+  .score-grade {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .score-breakdown {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+  }
+  .score-section {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+  }
+  .score-section-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .score-section-val {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: white;
+  }
+  .score-section-pct {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 2px;
+  }
+
+  /* ── FEEDBACK BADGE ── */
+  .q-feedback {
+    display: none;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 4px;
+    width: fit-content;
+  }
+  .q-feedback.show-correct { display: block; background: var(--success-light); color: var(--success); }
+  .q-feedback.show-wrong { display: block; background: var(--danger-light); color: var(--danger); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 48px 0;
+  }
+
+  /* ── CONTEXT BLOCK ── */
+  .context-block {
+    background: var(--gold-light);
+    border: 1px solid #e8d5a3;
+    border-left: 4px solid var(--gold);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+    margin-top: 8px;
+  }
+  .context-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .context-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .context-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .context-table td {
+    padding: 5px 8px;
+    color: var(--ink-soft);
+    border-bottom: 0.5px solid #e0d5b8;
+  }
+  .context-table td:last-child { text-align: right; font-family: 'DM Mono', monospace; }
+  .context-table tr.total td { font-weight: 600; color: var(--ink); border-top: 1.5px solid #c8a84a; border-bottom: none; }
+  .context-table tr.section-head td { font-weight: 600; color: var(--ink); padding-top: 10px; border-bottom: none; font-size: 12px; }
+  .context-table tr.indented td:first-child { padding-left: 20px; }
+  .context-note {
+    font-size: 12px;
+    color: #8a6a1a;
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  /* ── SCROLL TOP ── */
+  .scroll-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 44px;
+    height: 44px;
+    background: var(--ink);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .scroll-top.visible { opacity: 1; }
+  .scroll-top:hover { background: var(--accent); }
+
+  @media (max-width: 600px) {
+    .hero { padding: 36px 20px 32px; }
+    .main { padding: 24px 20px 60px; }
+    .progress-wrap { padding: 12px 20px; }
+    .hero-stats { gap: 20px; }
+    .q-card { padding: 16px 16px; }
+    .score-card { padding: 24px 20px; }
+    .score-big { font-size: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Capital University — Accounting Department</div>
+    <h1 class="hero-title">Accounting Principles <em>1</em></h1>
+    <p class="hero-sub">Chapters 1, 2 &amp; 3 &nbsp;·&nbsp; Dr. Hamdy Habl &nbsp;·&nbsp; Revision &amp; Practice</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num" id="total-count">96</span><span class="stat-label">Questions</span></div>
+      <div class="stat"><span class="stat-num" id="mc-count">66</span><span class="stat-label">Multiple Choice</span></div>
+      <div class="stat"><span class="stat-num">30</span><span class="stat-label">True / False</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <span class="progress-text" id="prog-text">0 / 96 answered</span>
+    <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
+    <span class="progress-pct" id="prog-pct">0%</span>
+  </div>
+</div>
+
+<main class="main">
+
+  <div class="section-header">
+    <div class="section-icon mc">MC</div>
+    <div class="section-info">
+      <div class="section-title">Multiple Choice</div>
+      <div class="section-meta">Select the best answer for each question</div>
+    </div>
+  </div>
+
+  <div id="mc-container"></div>
+
+  <div class="divider"></div>
+
+  <div class="section-header">
+    <div class="section-icon tf">T/F</div>
+    <div class="section-info">
+      <div class="section-title">True or False</div>
+      <div class="section-meta">Determine whether each statement is true or false</div>
+    </div>
+  </div>
+
+  <div id="tf-container"></div>
+
+  <div class="actions">
+    <button class="btn-primary" onclick="submitTest()">View Score</button>
+    <button class="btn-secondary" onclick="resetTest()">Reset All</button>
+  </div>
+
+  <div class="score-card" id="score-card">
+    <div class="score-card-inner">
+      <div class="score-top">
+        <div>
+          <div class="score-label">Final Score</div>
+          <div class="score-big" id="score-pct">—</div>
+          <div class="score-sub" id="score-sub">— correct out of 96</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="score-label">Grade</div>
+          <div class="score-grade" id="score-grade">—</div>
+        </div>
+      </div>
+      <div class="score-breakdown">
+        <div class="score-section">
+          <div class="score-section-label">Multiple Choice</div>
+          <div class="score-section-val" id="mc-val">—</div>
+          <div class="score-section-pct" id="mc-pct">—</div>
+        </div>
+        <div class="score-section">
+          <div class="score-section-label">True / False</div>
+          <div class="score-section-val" id="tf-val">—</div>
+          <div class="score-section-pct" id="tf-pct">—</div>
+        </div>
+        <div class="score-section">
+          <div class="score-section-label">Unanswered</div>
+          <div class="score-section-val" id="skip-val">—</div>
+          <div class="score-section-pct" id="skip-pct" style="color:rgba(255,255,255,0.35);">not yet answered</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<button class="scroll-top" id="scroll-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const mcQuestions = [
+  {q:"Closing entries are necessary for …………….",opts:["permanent accounts only.","temporary accounts only.","both permanent and temporary accounts.","permanent or real accounts only."],ans:1},
+  {q:"Each of the following accounts is closed to Income Summary except..",opts:["Expenses.","Owner's Drawing.","Revenues.","All of these are closed to Income Summary"],ans:1},
+  {q:"Closing entries …………… .",opts:["are prepared before the financial statements.","reduce the number of permanent accounts.","cause the revenue and expense accounts to have zero balances.","summarize the activity in every account"],ans:2},
+  {q:"In order to close the owner's drawing account, the …………… .",opts:["income summary account should be debited.","income summary account should be credited.","owner's capital account should be credited.","owner's capital account should be debited."],ans:3},
+  {q:"The entry to close the revenue account includes a ………….  ",opts:["debit to Income Summary for $3,500.","credit to Income Summary for $3,500.","debit to Revenues for $70,000.","credit to Revenues for $70,000."],ans:2},
+  {q:"The entry to close the expense accounts includes a …………….",opts:["debit to Income Summary for $3,500.","credit to Income Summary for $3,500.","debit to Income Summary for $73,500.","debit to Wages Expense for $2,500."],ans:2},
+  {q:"After the revenue and expense accounts have been closed, the balance in Income Summary will be ………… .",opts:["$0.","debit balance of $3,500.","credit balance of $3,500.","credit balance of $70,000"],ans:1},
+  {q:"The entry to close Income Summary to Nova, Capital includes …………...",opts:["debit to Revenue for $70,000.","credit to Expenses totaling $73,500.","a credit to Income Summary for $3,500.","a credit to Nova, Capital for $3,500."],ans:2},
+  {q:"On January 1, 2008, Nova reported owner's equity of $50,000. Owner drawings for the year totaled $10,000. On December 31, 2008, the company will report owner's equity of ………",opts:["$13,500.","$36,500.","$40,000.","$43,500."],ans:1},
+  {q:"After all closing entries have been posted, the Income Summary account will have a balance of …………….",opts:["$0.","$3,500 debit.","$3,500 credit.","$36,500 credit."],ans:0},
+  {q:"After all closing entries have been posted, the revenue account will have a balance of ……………...",opts:["$0.","$70,000 credit.","$70,000 debit.","$3,500 credit."],ans:0},
+  {q:"A post-closing trial balance will show ……………….",opts:["only permanent account balances.","only temporary account balances.","zero balances for all accounts.","the amount of net income (or loss) for the period"],ans:0},
+  {q:"A post-closing trial balance will show ………….",opts:["zero balances for all accounts.","zero balances for balance sheet accounts.","only balance sheet accounts.","only income statement accounts"],ans:2},
+  {q:"The first required step in the accounting cycle is ……….",opts:["reversing entries.","journalizing transactions in the book of original entry.","analyzing transactions.","posting transactions"],ans:2},
+  {q:"All of the following are property, plant, and equipment except ………… .",opts:["supplies.","machinery.","land.","buildings."],ans:0},
+  {q:"A current asset is …………….",opts:["the last asset purchased by a business.","an asset which is currently being used to produce a product or service.","usually found as a separate classification in the income statement.","an asset that a company expects to convert to cash or use up within one year"],ans:3},
+  {q:"An intangible asset …………...",opts:["does not have physical substance, yet often are very valuable.","is worthless because it has no physical substance.","is converted into a tangible asset during the operating cycle.","cannot be classified on the balance sheet because it lacks physical substance."],ans:0},
+  {q:"Liabilities are generally classified on a balance sheet as ……………….",opts:["small liabilities and large liabilities.","present liabilities and future liabilities.","tangible liabilities and intangible liabilities.","current liabilities and long-term liabilities."],ans:3},
+  {q:"On May 14, Arizona Company purchased supplies of $2,000 on account. The entry to record the purchases will include ……………",opts:["A debit to Supplies and a credit to Accounts Payable.","A debit to Supplies Expense and a credit to Accounts Receivable.","A debit to Supplies and a credit to Cash.","A debit to Accounts Receivable and a credit to Supplies."],ans:0},
+  {q:"On June 1, 2021, Donna Company reported a cash balance of $12,000. During June, Donna made deposits of $5,000 and made disbursements totaling $16,000. What is the cash balance at the end of June?",opts:["$1,000 debit balance","$15,000 debit balance","$1,000 credit balance","$4,000 credit balance"],ans:0},
+  {q:"The simple accounting cycle consists of ………. steps.",opts:["5","7","9","None of these"],ans:1},
+  {q:"The non-simple accounting cycle consists of ……… steps.",opts:["9","7","8","None of these"],ans:0},
+  {q:"The ………. is what makes the accounting cycle in a non-simple form.",opts:["The journal entries","Capitalization process","posting process","adjusting process"],ans:3},
+  {q:"A temporary account that is opened and closed only at the end of every year.",opts:["Revenues","expenses","income summary","all of these","none of these"],ans:2},
+  {q:"The temporary account that does not have a normal balance.",opts:["Drawings","revenue","expenses","income summary","there is no such account"],ans:3},
+  {q:"…………… accounts generally consist of all balance sheet accounts and these accounts are not closed.",opts:["Temporary","permanent","nominal","Additional","fake"],ans:1},
+  {q:"Permanent accounts report on activities related to …………… future accounting periods and they carry their ending balances into the next period.",opts:["Only one","just five","one or more","another answer."],ans:2},
+  {q:"Temporary accounts accumulate data related to …………. accounting period.",opts:["More than one","one","zero","none of these."],ans:1},
+  {q:"Closing is the process of resetting the accounts of revenue, expenses, drawings and net income to ………… at the end of every accounting period.",opts:["Be permanent","credited","debited","zero"],ans:3},
+  {q:"……........... accounts include all income statement accounts, the drawings account and the income summary account.",opts:["Permanent","personnel","temporary","none of these"],ans:2},
+  {q:"……........... are known as the productive facilities of any firm.",opts:["the current assets","long-term liabilities","property, plant and equipment","none of these"],ans:2},
+  {q:"The special account used only in the closing process to temporarily hold the amounts of revenues and expenses before the net difference is added to (or subtracted from) the owner's capital account is the:",opts:["Nominal account","closing account","income summary account","None of these"],ans:2},
+  {q:"The accountant made an error by recording the same transaction twice. In order to correct that error, the accountant has to …………….",opts:["reverse the transaction entry twice.","do nothing.","reverse the transaction entry only once.","cancel the transaction posting."],ans:2},
+  {q:"Any error that occurs in journalizing and the posting process ………………. the trial balance.",opts:["will not reflect on.","May or may not reflect on.","should be deducted from the debit side of.","will reflect on."],ans:1},
+  {q:"Mona began her business by $100,000 as capital. The net result of the company during the period was a net loss of $20,000. The capital account will be ………………. in the closing entry of the net result.",opts:["Credited by $20,000.","debited by $80,000","debited by $20,000.","another answer."],ans:2},
+  {q:"Using the previous question, what would be the balance of the capital account appearing on the trial balance before and after the closing?",opts:["$20,000, $100,000","$80,000, $20,000","$100,000, $80,000","$80,000, $100,000"],ans:2},
+  {q:"After the closing entries are made, …………. accounts are going to appear on the trial balance.",opts:["Temporary","Adjusted","Permanent","Nominal","another answer"],ans:2},
+  {q:"Accounts with balances that are carried over to future years.",opts:["Temporary.","Permanent.","Drawings.","Expenses."],ans:1},
+  {q:"Which is not a source document?",opts:["Invoice.","Check.","Memorandum.","none of these."],ans:3},
+  {q:"What account balance is not affected by the closing entries?",opts:["drawings.","Capital.","cash in bank.","Expenses."],ans:2},
+  {q:"A balance of an asset …………...",opts:["May be debit.","May be credit.","Always credit.","Always debit.","Another answer."],ans:3},
+  {q:"A company's operating cycle ……………. 12 months in length.",opts:["is always.","May be.","have to be.","can't be."],ans:1},
+  {q:"Which of the following statements is false?",opts:["Revenues increase owner's equity.","Revenues have normal credit balances.","Revenues are a positive factor in the computation of net income.","Revenues are increased by debits"],ans:3},
+  {q:"Which of the following rules is incorrect?",opts:["Credits decrease the drawing account.","Debits increase the capital account.","Credits increase revenue accounts.","Debits decrease liability accounts"],ans:1},
+  {q:"The standard form of a journal entry has the ………….",opts:["debit account entered first and indented.","credit account entered first and indented.","debit account entered first at the extreme left margin.","credit account entered first at the extreme left margin."],ans:2},
+  {q:"DINA's company purchases equipment for $1,500 and furniture for $1,200 from Alex's company for $2,700 cash. The entry for this transaction will include ……….",opts:["Credit to cash for Alex.","Credit to accounts payable for donia.","debit to equipment $1,500 and debit to furniture $1,200 for Alex.","debit to equipment $1,500 and furniture $1,200 for Dina's company."],ans:3},
+  {q:"In order to convert the complete accounting cycle to a simple one, how many steps do you have to cancel?",opts:["3","4","2","1"],ans:2},
+  {q:"The capital at the end of the year should appear on ……………...",opts:["owners' equity statement.","cash flow statement.","balance sheet.","A & C.","All of these."],ans:3},
+  {q:"DINA purchased supplies from Maher's library to be used by her sons and paid the entire amount by her visa card. The journal entry to record this transaction will include:",opts:["There is no entry required.","Credit to supplies by $2000 for Maher.","Debit to supplies by $2000 for Donia's company.","Credit to supplies by $2000 for Donia's company."],ans:0},
+  {q:"The drawings account can be considered as …………….",opts:["liability account.","expense account.","Obligations from the owner's perspective.","None of these."],ans:3},
+  {q:"A capital account balance …………….",opts:["May be debit.","May be credit.","Always credit.","Always debit."],ans:2},
+  {q:"A liability account …………….",opts:["May be debit.","May be credit.","May be debit or credit.","Always credit."],ans:3},
+  {q:"The balance of a liability account …………….",opts:["May be debit.","May be credit.","May be debit or credit.","Always credit."],ans:3},
+  {q:"The steps in preparing a trial balance include all of the following except:",opts:["listing the account titles and their balances.","totalling the debit and credit columns.","proving the equality of the two columns.","transferring journal amounts to ledger accounts."],ans:3},
+  {q:"Ahmed Company received a cash advance of $500 from a customer. As a result of this event,",opts:["assets increased by $500.","owner's equity increased by $500.","liabilities decreased by $500.","both a and b"],ans:0},
+  {q:"On April 1, 2020 Leno buys a machine for his business and finances this purchase with cash and a note. When journalizing this transaction, he will:",opts:["use two journal entries.","make a compound entry.","make a simple entry.","list the credit entries first, which is proper form for this type of transaction"],ans:1},
+  {q:"Another name for journal is:",opts:["listing.","book of original entry.","book of summarizing.","book of posting."],ans:1},
+  {q:"What is the amount of owner's equity at September 30, 2020?",opts:["$136,000","$8,000","$137,000","$142,000"],ans:3},
+  {q:"After transaction information has been recorded in the journal, it is transferred to the:",opts:["trial balance.","income statement.","book of original entry.","Ledger"],ans:3},
+  {q:"On July 7, 2022, Rethink Company performed cash services of $1,400. The entry to record this transaction would include:",opts:["a debit to Service Revenue of $1,400.","a credit to Accounts Receivable of $1,400.","a debit to Cash of $1,400.","a credit to Accounts Payable of $1,400."],ans:2},
+  {q:"On December 1, 2020, Marco Company's accounts receivable balance was $1,200. During December, Marco had credit revenues of $5,000 and collected accounts receivable of $4,000. On December 31, 2020, the accounts receivable balance is:",opts:["$1,200 debit.","$2,200 debit.","$6,200 debit.","$2,200 credit."],ans:1},
+  {q:"During February 2021, its first month of operations, the owner of the company invested cash of $25,000. The company had cash revenues of $4,000 and paid expenses of $7,000. Assuming no other transactions impacted the cash account, what is the balance in Cash at February 28?",opts:["$3,000 credit","$22,000 debit","$29,000 debit","$18,000 credit"],ans:1},
+  {q:"The final closing entry to be journalized typically closes the:",opts:["revenue accounts.","owner's drawings account.","owner's capital account.","expense accounts."],ans:1},
+  {q:"Jack withdraws $500 cash from his business for personal use. The entry for this transaction will include a debit of $500 to:",opts:["Jack, Drawing.","Jack, Capital.","Owner's Salary Expense.","Salaries Expense."],ans:0},
+  {q:"On May 4, Carter received a cash payment for services previously billed to a client. Carter also paid his telephone bill and bought equipment on credit. For the three transactions, at least one of the entries will include a:",opts:["credit to Nick Carter, Capital.","credit to Notes Payable.","debit to Accounts Receivable.","credit to Accounts Payable"],ans:3},
+  {q:"What did Cerner Company show as total credits on its trial balance?",opts:["$21,500","$21,000","$20,500","$22,000"],ans:0},
+  {q:"Equipment is classified in the balance sheet as:",opts:["a current asset.","property, plant, and equipment.","an intangible asset.","a long-term investment."],ans:1},
+  {q:"Intangible assets include each of the following except:",opts:["copyrights.","goodwill.","land","Patent"],ans:2},
+  {q:"Balance sheet accounts are considered to be:",opts:["temporary owner's equity accounts.","permanent accounts.","capital accounts.","nominal accounts."],ans:1},
+  {q:"Dawson purchased equipment for $2,500, paid $500 in cash and signed a note for the balance. Dawson debited Equipment, credited Cash and:",opts:["nothing further must be done.","debited the Dawson, Capital account for $2,000.","credited another asset account for $500.","credited a liability account for $2,000"],ans:3},
+  {q:"The income summary account:",opts:["is a permanent account.","appears on the balance sheet.","appears on the income statement.","is a temporary account."],ans:3},
+  {q:"If Income Summary has a credit balance after revenues and expenses have been closed into it, the closing entry for Income Summary will include a ….. .",opts:["debit to the owner's capital account.","debit to the owner's drawings account.","credit to the owner's capital account.","Credit to the owner's drawings account"],ans:2},
+  {q:"The balance in the income summary account before it is closed will be equal to:",opts:["the net income or loss on the income statement.","the beginning balance in the owner's capital account.","the ending balance in the owner's capital account.","zero."],ans:0},
+  {q:"The entry to close the expense accounts includes a:",opts:["debit to Income Summary for $2,000.","credit to Rent Expense for $1,300.","credit to Income Summary for $5,300.","debit to Salaries and Wages Expense for $3,000."],ans:1},
+  {q:"What are total current assets on December 31, 2021?",opts:["$28,000","$35,200","$40,200","$46,200"],ans:2},
+  {q:"Income Summary has a credit balance of $19,000 in B. Browne Co. after closing revenues and expenses. The entry to close Income Summary is:",opts:["credit Income Summary $19,000, debit Owner's Capital $19,000.","credit Income Summary $19,000, debit Owner's Drawings $19,000.","debit Income Summary $19,000, credit Owner's Drawings $19,000.","debit Income Summary $19,000, credit Owner's Capital $19,000."],ans:3},
+  {q:"When an owner makes a withdrawal:",opts:["it doesn't have to be cash, it could be another asset.","the drawing account will be increased with a credit.","the capital account will be directly increased with a debit.","the drawing account will be decreased with a debit."],ans:0},
+  {q:"On June 1, 2020, Delbert Inc. reported a cash balance of $12,000. During June, Delbert made deposits of $3,000 and made disbursements totalling $16,000. What is the cash balance at the end of June?",opts:["$1,000 debit balance","$15,000 debit balance","$1,000 credit balance","$4,000 credit balance"],ans:2},
+  {q:"If the total debit entries to equipment = $10,000 and total credit entries = $8,000. The equipment account has a (n):",opts:["$8,000 credit balance.","$2,000 debit balance.","$6,000 debit balance.","$2,000 credit balance."],ans:1},
+  {q:"A future economic sacrifice of benefits resulting from current obligations to transfer or render services as a result of past transactions is a (n):",opts:["Assets","Liabilities","Expenses","Revenues"],ans:1},
+  {q:"The policy of recording revenues when realized or expenses in the same period of its revenues, regardless of its collection or payment is called the:",opts:["Accrual Basis of Accounting","Cash Basis of Accounting","US-GAAP","Periodicity Assumption"],ans:0},
+  {q:"What did Waleed's shop show as total credits on its trial balance?",opts:["$1,000,000","$1,680,000","$1,860,000","$1,580,000"],ans:2},
+  {q:"The total revenues are:",opts:["$300,000","$200,000","$100,000","$400,000"],ans:0},
+  {q:"The total expenses are:",opts:["$90,000","$120,000","$140,000","$60,000"],ans:2},
+  {q:"The net income of Waleed's shop is:",opts:["$435,000","$160,000","$135,000","$300,000"],ans:1},
+  {q:"The ending capital of Waleed's shop is:",opts:["$600,000","$500,000","$660,000","$760,000"],ans:2},
+  {q:"The total current assets are:",opts:["$580,000","$240,000","$1,380,000","$1,620,000"],ans:1},
+  {q:"The total fixed assets are:",opts:["$580,000","$240,000","$1,380,000","$1,620,000"],ans:2},
+  {q:"The total assets are:",opts:["$580,000","$240,000","$1,380,000","$1,620,000"],ans:3},
+  {q:"The total liabilities are:",opts:["$400,000","$470,000","$1,380,000","$960,000"],ans:3},
+  {q:"The total liabilities &amp; equity are:",opts:["$580,000","$240,000","$1,380,000","$1,620,000"],ans:3},
+  {q:"If salaries expenses are paid for $8,000 in cash. The effect of this transaction on the accounting equation is:",opts:["A Decrease in Assets & a decrease in owner's equity.","An increase in Assets & an increase in owner's equity","A Decrease in Assets & an increase in owner's equity.","An increase in Assets & a decrease in owner's equity"],ans:0},
+  {q:"………… states that 'Each transaction has two sides. One debit and one credit. The debit should be equal to the credit'.",opts:["The double entry system","The Debit and Credit Rule","The cost principle","The matching principle"],ans:0},
+  {q:"Owner's equity is increased by:",opts:["Assets","Liabilities","owner's equity","Expenses","Revenues"],ans:4},
+  {q:"The net income amount is shown on ……… .",opts:["income statement only","the owner's equity statement only.","both the income statement and the owner's equity statement.","both the balance sheet and the owner's equity statement."],ans:2},
+  {q:"Assets of Ahmed Company increased by $312,000, also its liabilities increased by $270,000. Owner's equity:",opts:["Decreased by $42,000","Decreased by $582,000","Increased by $42,000","Increased by $582,000"],ans:2},
+];
+
+const tfQuestions = [
+  {q:"The owner's drawings account is closed to the Income Summary account in order to properly determine net income (or loss) for the period.",ans:false},
+  {q:"After closing entries have been journalized and posted, all temporary accounts in the ledger should have zero balances.",ans:true},
+  {q:"Closing revenue and expense accounts to the Income Summary account is an optional bookkeeping procedure.",ans:false},
+  {q:"Closing the drawings account to Owner's Capital is not necessary if net income is greater than owner's drawings during the period.",ans:false},
+  {q:"Cash and supplies are both classified as current assets.",ans:true},
+  {q:"The post-closing trial balance will contain only owner's equity statement accounts and balance sheet accounts.",ans:false},
+  {q:"Each transaction must be analyzed in terms of its effect on the accounts before it can be recorded in a journal.",ans:true},
+  {q:"Transactions are entered in the ledger accounts and then transferred to journals.",ans:false},
+  {q:"Debit and credit can be interpreted to mean increase and decrease, respectively.",ans:false},
+  {q:"Current assets are listed in the order of liquidity.",ans:true},
+  {q:"Under the double-entry system, revenues must always equal expenses.",ans:false},
+  {q:"The primary goal of a trial balance is to prove the mathematical equality of the debits and credits after posting.",ans:true},
+  {q:"The trial balance will not balance when incorrect account titles are used in journalizing or posting.",ans:false},
+  {q:"A trial balance does not prove that all transactions have been recorded or that the ledger is correct.",ans:true},
+  {q:"The owner's drawing account is a permanent account whose balance is carried forward to the next accounting period.",ans:false},
+  {q:"The Proprietorship is a business organized as a separate legal entity under state law having ownership divided into shares of stock.",ans:false},
+  {q:"The normal balance of the liabilities and owner's equity accounts is the debit balance.",ans:false},
+  {q:"All Expenses are credit accounts.",ans:false},
+  {q:"The Changes in owner's equity during the period can be shown by the statement of cash flows.",ans:false},
+  {q:"The Statement of financial position shows the entity's revenues and expenses, and net result of the activities.",ans:false},
+  {q:"Revenues are the Cash collected from the sale of goods during a period.",ans:false},
+  {q:"The normal balance of the assets accounts is the credit balance.",ans:false},
+  {q:"The normal balance of the liabilities and owner's equity accounts is the debit balance.",ans:false},
+  {q:"All revenues are debit accounts.",ans:false},
+  {q:"The profit or loss of the enterprise is determined by the statement of cash flows.",ans:false},
+  {q:"The statement of owner's equity shows the Changes in owner's equity during the period.",ans:true},
+  {q:"Preparation of the general-purpose financial statements is called Summarizing.",ans:false},
+  {q:"The sole purpose of accounting is to determine the profit or loss of the project.",ans:false},
+  {q:"An account will have a credit balance if the credits exceed the debits.",ans:true},
+  {q:"If expenses are paid in cash, then assets will increase.",ans:false},
+];
+
+const letters = ['a','b','c','d','e'];
+const total = mcQuestions.length + tfQuestions.length;
+let answered = {};
+let tfAnswers = {};
+let scores = { mc: 0, tf: 0 };
+
+function updateProgress() {
+  const count = Object.keys(answered).length + Object.keys(tfAnswers).length;
+  const pct = Math.round(count/total*100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-text').textContent = count + ' / ' + total + ' answered';
+  document.getElementById('prog-pct').textContent = pct + '%';
+}
+
+function revealMC(i) {
+  const item = mcQuestions[i];
+  const chosen = answered[i];
+  const card = document.getElementById('mc-card-'+i);
+  item.opts.forEach((_,j) => {
+    const opt = document.getElementById(`mc-opt-${i}-${j}`);
+    opt.style.pointerEvents = 'none';
+    if(j === item.ans) opt.classList.add('correct-opt');
+    else if(j === chosen && chosen !== item.ans) opt.classList.add('wrong-opt');
+  });
+  const fb = document.getElementById('mc-fb-'+i);
+  if(chosen === item.ans) {
+    scores.mc++;
+    card.classList.add('correct-card');
+    fb.textContent = '✓ Correct!';
+    fb.className = 'q-feedback show-correct';
+  } else {
+    card.classList.add('wrong-card');
+    fb.textContent = '✗ Incorrect — correct answer: ' + letters[item.ans] + ') ' + item.opts[item.ans];
+    fb.className = 'q-feedback show-wrong';
+  }
+  updateScoreCard();
+}
+
+function revealTF(i) {
+  const item = tfQuestions[i];
+  const chosen = tfAnswers[i];
+  const card = document.getElementById('tf-card-'+i);
+  const tBtn = document.getElementById('tf-t-'+i);
+  const fBtn = document.getElementById('tf-f-'+i);
+  tBtn.style.pointerEvents = 'none'; fBtn.style.pointerEvents = 'none';
+  const correctBtn = item.ans ? tBtn : fBtn;
+  correctBtn.classList.add('correct-tf');
+  if(chosen !== item.ans) (chosen ? tBtn : fBtn).classList.add('wrong-tf');
+  const fb = document.getElementById('tf-fb-'+i);
+  if(chosen === item.ans) {
+    scores.tf++;
+    card.classList.add('correct-card');
+    fb.textContent = '✓ Correct!';
+    fb.className = 'q-feedback show-correct';
+  } else {
+    card.classList.add('wrong-card');
+    fb.textContent = '✗ Incorrect — correct answer: ' + (item.ans ? 'True' : 'False');
+    fb.className = 'q-feedback show-wrong';
+  }
+  updateScoreCard();
+}
+
+function updateScoreCard() {
+  const totalAnswered = Object.keys(answered).length + Object.keys(tfAnswers).length;
+  const totalCorrect = scores.mc + scores.tf;
+  const pct = totalAnswered > 0 ? Math.round(totalCorrect/totalAnswered*100) : 0;
+  const card = document.getElementById('score-card');
+  card.style.display = 'block';
+  document.getElementById('score-pct').textContent = pct + '%';
+  document.getElementById('score-sub').textContent = totalCorrect + ' correct out of ' + totalAnswered + ' answered';
+  document.getElementById('score-grade').textContent = getGrade(pct);
+  document.getElementById('mc-val').textContent = scores.mc + ' / ' + Object.keys(answered).length;
+  const mcAns = Object.keys(answered).length;
+  document.getElementById('mc-pct').textContent = mcAns > 0 ? Math.round(scores.mc/mcAns*100) + '% accuracy' : '—';
+  const tfAns = Object.keys(tfAnswers).length;
+  document.getElementById('tf-val').textContent = scores.tf + ' / ' + tfAns;
+  document.getElementById('tf-pct').textContent = tfAns > 0 ? Math.round(scores.tf/tfAns*100) + '% accuracy' : '—';
+  document.getElementById('skip-val').textContent = total - totalAnswered;
+}
+
+const contextBlocks = {
+  4: {
+    label: 'Use the following information to answer questions 5 – 11',
+    title: 'Nova Co. — Income Statement (Year 2008)',
+    html: `<table class="context-table">
+      <tr><td>Revenues</td><td>$70,000</td></tr>
+      <tr class="section-head"><td>Expenses:</td><td></td></tr>
+      <tr class="indented"><td>Wages Expense</td><td>$45,000</td></tr>
+      <tr class="indented"><td>Rent Expense</td><td>$12,000</td></tr>
+      <tr class="indented"><td>Advertising Expense</td><td>$8,000</td></tr>
+      <tr class="indented"><td>Maintenance Expenses</td><td>$6,000</td></tr>
+      <tr class="indented"><td>Utilities Expense</td><td>$2,500</td></tr>
+      <tr class="total"><td>Net Loss</td><td>$(3,500)</td></tr>
+    </table>`
+  },
+  57: {
+    label: 'Use the following information to answer question 58',
+    title: 'Foil Co. — September 2020',
+    html: `<table class="context-table">
+      <tr><td>Owner's equity, Sept 1</td><td>$136,000</td></tr>
+      <tr><td>Revenues generated</td><td>$20,000</td></tr>
+      <tr><td>Expenses incurred</td><td>$12,000</td></tr>
+      <tr><td>Equipment purchased (cash)</td><td>$5,000</td></tr>
+      <tr><td>Cash withdrawn</td><td>$2,000</td></tr>
+    </table>`
+  },
+  65: {
+    label: 'Use the following information to answer question 66',
+    title: 'Cerner Company — End of First Year Balances',
+    html: `<table class="context-table">
+      <tr><td>Cash</td><td>$5,000</td></tr>
+      <tr><td>Prepaid Insurance</td><td>$500</td></tr>
+      <tr><td>Accounts Receivable</td><td>$2,500</td></tr>
+      <tr><td>Accounts Payable</td><td>$2,000</td></tr>
+      <tr><td>Notes Payable</td><td>$3,000</td></tr>
+      <tr><td>Cerner, Capital</td><td>$1,000</td></tr>
+      <tr><td>Cerner, Drawing</td><td>$500</td></tr>
+      <tr><td>Revenues</td><td>$15,000</td></tr>
+      <tr><td>Expenses</td><td>$12,500</td></tr>
+    </table>`
+  },
+  73: {
+    label: 'Use the following information to answer question 74',
+    title: 'Snap Shot, Inc. — Income Statement (Month of June 2016)',
+    html: `<table class="context-table">
+      <tr><td>Revenues</td><td>$7,300</td></tr>
+      <tr class="section-head"><td>Expenses:</td><td></td></tr>
+      <tr class="indented"><td>Salaries and Wages Expense</td><td>$3,000</td></tr>
+      <tr class="indented"><td>Rent Expense</td><td>$1,300</td></tr>
+      <tr class="indented"><td>Advertising Expense</td><td>$700</td></tr>
+      <tr class="indented"><td>Supplies Expense</td><td>$200</td></tr>
+      <tr class="indented"><td>Insurance Expense</td><td>$100</td></tr>
+      <tr class="total"><td>Total Expenses</td><td>$5,300</td></tr>
+      <tr class="total"><td>Net Income</td><td>$2,000</td></tr>
+    </table>`
+  },
+  74: {
+    label: 'Use the following information to answer question 75',
+    title: 'Freight Service — Year Ending December 31, 2021',
+    html: `<table class="context-table">
+      <tr><td>Accounts Payable</td><td>$19,000</td></tr>
+      <tr><td>Accounts Receivable</td><td>$13,000</td></tr>
+      <tr><td>Accumulated Depreciation – Equipment</td><td>$26,000</td></tr>
+      <tr><td>Advertising Expense</td><td>$21,200</td></tr>
+      <tr><td>Cash</td><td>$15,000</td></tr>
+      <tr><td>Owner's Capital (1/1/16)</td><td>$104,000</td></tr>
+      <tr><td>Owner's Drawings</td><td>$11,000</td></tr>
+      <tr><td>Depreciation Expense</td><td>$12,000</td></tr>
+      <tr><td>Insurance Expense</td><td>$3,800</td></tr>
+      <tr><td>Note Payable, due 6/30/17</td><td>$72,000</td></tr>
+      <tr><td>Prepaid Insurance (12-month policy)</td><td>$7,200</td></tr>
+      <tr><td>Rent Expense</td><td>$16,000</td></tr>
+      <tr><td>Salaries and Wages Expense</td><td>$32,000</td></tr>
+      <tr><td>Service Revenue</td><td>$135,000</td></tr>
+      <tr><td>Supplies</td><td>$5,000</td></tr>
+      <tr><td>Supplies Expense</td><td>$6,000</td></tr>
+      <tr><td>Equipment</td><td>$210,000</td></tr>
+    </table>`
+  },
+  81: {
+    label: 'Use the following information to answer questions 82 – 91',
+    title: "Waleed's Shop — Financial Records",
+    html: `<table class="context-table">
+      <tr class="section-head"><td>Assets &amp; Liabilities</td><td></td></tr>
+      <tr class="indented"><td>Accounts Payable</td><td>$90,000</td></tr>
+      <tr class="indented"><td>Accounts Receivable</td><td>$100,000</td></tr>
+      <tr class="indented"><td>Land</td><td>$340,000</td></tr>
+      <tr class="indented"><td>Cash</td><td>$40,000</td></tr>
+      <tr class="indented"><td>Equipment</td><td>$300,000</td></tr>
+      <tr class="indented"><td>Buildings</td><td>$500,000</td></tr>
+      <tr class="indented"><td>Notes Payable</td><td>$470,000</td></tr>
+      <tr class="indented"><td>Computers</td><td>$240,000</td></tr>
+      <tr class="indented"><td>Long-term Loans</td><td>$400,000</td></tr>
+      <tr class="indented"><td>Inventory</td><td>$100,000</td></tr>
+      <tr class="indented"><td>Beginning Capital</td><td>$600,000</td></tr>
+      <tr class="indented"><td>Drawings</td><td>$100,000</td></tr>
+      <tr class="section-head"><td>Revenues</td><td></td></tr>
+      <tr class="indented"><td>Sales Revenues</td><td>$200,000</td></tr>
+      <tr class="indented"><td>Service Revenues</td><td>$100,000</td></tr>
+      <tr class="section-head"><td>Expenses</td><td></td></tr>
+      <tr class="indented"><td>Salaries Expense</td><td>$60,000</td></tr>
+      <tr class="indented"><td>Rent Expense</td><td>$30,000</td></tr>
+      <tr class="indented"><td>Advertising Expense</td><td>$20,000</td></tr>
+      <tr class="indented"><td>Utilities Expense</td><td>$30,000</td></tr>
+    </table>`
+  }
+};
+
+function buildMC() {
+  const container = document.getElementById('mc-container');
+  mcQuestions.forEach((item, i) => {
+    if(contextBlocks[i]) {
+      const cb = contextBlocks[i];
+      const block = document.createElement('div');
+      block.className = 'context-block';
+      block.innerHTML = `<div class="context-label">${cb.label}</div><div class="context-title">${cb.title}</div>${cb.html}`;
+      container.appendChild(block);
+    }
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = 'mc-card-' + i;
+    const opts = item.opts.map((o,j) => `
+      <label class="option" id="mc-opt-${i}-${j}" onclick="selectMC(${i},${j})">
+        <input type="radio" name="mc-${i}" value="${j}">
+        <div class="option-dot"></div>
+        <span class="option-letter">${letters[j]})</span>
+        <span class="option-text">${o}</span>
+      </label>`).join('');
+    card.innerHTML = `
+      <div class="q-header">
+        <span class="q-badge">${i+1}</span>
+        <span class="q-text">${item.q}</span>
+      </div>
+      <div class="options">${opts}</div>
+      <div class="q-feedback" id="mc-fb-${i}"></div>`;
+    container.appendChild(card);
+  });
+}
+
+function selectMC(qi, oi) {
+  if(answered[qi] !== undefined) return;
+  answered[qi] = oi;
+  document.getElementById(`mc-opt-${qi}-${oi}`).classList.add('selected');
+  document.getElementById('mc-card-'+qi).classList.add('answered');
+  updateProgress();
+  revealMC(qi);
+}
+
+function buildTF() {
+  const container = document.getElementById('tf-container');
+  tfQuestions.forEach((item, i) => {
+    const n = mcQuestions.length + i + 1;
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = 'tf-card-' + i;
+    card.innerHTML = `
+      <div class="q-header">
+        <span class="q-badge">${n}</span>
+        <span class="q-text">${item.q}</span>
+      </div>
+      <div class="tf-wrap">
+        <button class="tf-btn" id="tf-t-${i}" onclick="selectTF(${i},true)"><div class="tf-dot"></div>True</button>
+        <button class="tf-btn" id="tf-f-${i}" onclick="selectTF(${i},false)"><div class="tf-dot"></div>False</button>
+      </div>
+      <div class="q-feedback" id="tf-fb-${i}"></div>`;
+    container.appendChild(card);
+  });
+}
+
+function selectTF(i, val) {
+  if(tfAnswers[i] !== undefined) return;
+  tfAnswers[i] = val;
+  document.getElementById(val ? 'tf-t-'+i : 'tf-f-'+i).classList.add('selected');
+  document.getElementById('tf-card-'+i).classList.add('answered');
+  updateProgress();
+  revealTF(i);
+}
+
+function getGrade(pct) {
+  if(pct >= 90) return 'A+';
+  if(pct >= 85) return 'A';
+  if(pct >= 80) return 'B+';
+  if(pct >= 75) return 'B';
+  if(pct >= 70) return 'C+';
+  if(pct >= 65) return 'C';
+  if(pct >= 60) return 'D+';
+  if(pct >= 50) return 'D';
+  return 'F';
+}
+
+function submitTest() {
+  document.getElementById('score-card').scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function resetTest() {
+  answered = {};
+  tfAnswers = {};
+  scores = { mc: 0, tf: 0 };
+  document.getElementById('mc-container').innerHTML = '';
+  document.getElementById('tf-container').innerHTML = '';
+  document.getElementById('score-card').style.display = 'none';
+  buildMC();
+  buildTF();
+  updateProgress();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// Scroll to top button
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('scroll-btn');
+  btn.classList.toggle('visible', window.scrollY > 400);
+});
+
+buildMC();
+buildTF();
+updateProgress();
+document.getElementById('total-count').textContent = total;
+document.getElementById('mc-count').textContent = mcQuestions.length;
+</script>
+</body>
+</html>
