@@ -307,15 +307,25 @@
     opacity: 0;
     transition: opacity 0.15s;
   }
-  .option.selected .option-dot {
+.option.selected .option-dot {
     border-color: var(--accent);
     background: var(--accent-light);
   }
-  .option.selected .option-dot::after { opacity: 1; }
-  .option.selected {
+.option.selected .option-dot::after { opacity: 1; }
+.option.selected {
+    border-color: var(--accent);
+    background: var(--accent-light);
+  }
+.option.correct-opt .option-dot {
     border-color: var(--success);
     background: var(--success-light);
   }
+.option.correct-opt .option-dot::after { opacity: 1; background: var(--success); }
+.option.wrong-opt .option-dot {
+    border-color: var(--gold);
+    background: var(--gold-light);
+  }
+.option.wrong-opt .option-dot::after { opacity: 1; background: var(--gold); }
   .option-letter {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
@@ -835,8 +845,8 @@ function revealMC(i) {
   item.opts.forEach((_,j) => {
     const opt = document.getElementById(`mc-opt-${i}-${j}`);
     opt.style.pointerEvents = 'none';
-    if(j === item.ans) opt.classList.add('correct-opt');
-    else if(j === chosen && chosen !== item.ans) opt.classList.add('wrong-opt');
+ if(j === item.ans) opt.classList.add('correct-opt');
+else if(j === chosen && chosen !== item.ans) { opt.classList.add('wrong-opt'); opt.classList.remove('selected'); }
   });
   const fb = document.getElementById('mc-fb-'+i);
   if(chosen === item.ans) {
