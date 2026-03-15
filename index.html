@@ -1041,7 +1041,7 @@ function selectMC(qi, oi) {
 function buildTF() {
   const container = document.getElementById('tf-container');
   tfQuestions.forEach((item, i) => {
-    const n = mcQuestions.length + i + 1;
+    const n = i + 1;
     const card = document.createElement('div');
     card.className = 'q-card';
     card.id = 'tf-card-' + i;
